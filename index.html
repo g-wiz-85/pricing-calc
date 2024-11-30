@@ -7,27 +7,28 @@
   <style>
     /* Global Styles */
     body {
-      font-family: 'Roboto', Arial, sans-serif; /* Update with your brand font */
-      background-color: #f8f9fa; /* Light gray background */
+      font-family: 'Arial', sans-serif;
+      background-color: #443558; /* Dark purple for background */
       margin: 0;
       padding: 0;
-      color: #333; /* Text color */
+      color: #ffffff; /* White for default text */
     }
 
     .container {
       max-width: 800px;
       margin: 40px auto;
       padding: 20px;
-      background-color: #ffffff; /* White background for the content box */
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-      border: 1px solid #e0e0e0; /* Light border */
+      background-color: #ffffff; /* White background for the main box */
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Snazzy shadow */
+      border: 1px solid #443558; /* Subtle brand color border */
+      color: #000000; /* Black text inside */
     }
 
     h1 {
       text-align: center;
-      font-size: 2rem;
-      color: #0056b3; /* Primary brand color */
+      font-size: 2.5rem;
+      color: #24afa2; /* Vibrant green-blue for headings */
       margin-bottom: 20px;
     }
 
@@ -35,46 +36,62 @@
       display: block;
       margin: 10px 0 5px;
       font-weight: bold;
-      color: #333;
+      color: #443558; /* Dark purple for labels */
     }
 
     input, select, button {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: 1px solid #24afa2; /* Vibrant green-blue border */
+      border-radius: 8px;
       font-size: 1rem;
     }
 
+    input:focus, select:focus {
+      outline: none;
+      border: 2px solid #eda85a; /* Orange for focus highlight */
+    }
+
     button {
-      background-color: #0056b3; /* Primary brand color */
-      color: white;
+      background-color: #24afa2; /* Vibrant green-blue button */
+      color: #ffffff; /* White text on button */
       border: none;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     button:hover {
-      background-color: #004494; /* Darker primary color for hover */
+      background-color: #eda85a; /* Orange hover */
+      transform: scale(1.03); /* Slight pop effect */
     }
 
     .result {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: bold;
       text-align: center;
       margin-top: 20px;
-      padding: 10px;
-      background-color: #e7f1ff; /* Light blue background for results */
-      border: 1px solid #cce4ff; /* Light blue border for results */
-      border-radius: 5px;
+      padding: 15px;
+      background-color: #ff8dda; /* Pink background for results */
+      color: #ffffff; /* White text for results */
+      border: 1px solid #eda85a; /* Subtle border */
+      border-radius: 8px;
     }
 
     footer {
       text-align: center;
       margin-top: 20px;
       font-size: 0.9rem;
-      color: #777;
+      color: #ffffff; /* White for footer text */
+    }
+
+    footer a {
+      color: #24afa2; /* Vibrant green-blue for footer links */
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     /* Responsive Design */
@@ -119,7 +136,7 @@
   </div>
 
   <footer>
-    © 2024 Your Company Name. All rights reserved.
+    © 2024 <a href="#">Your Company Name</a>. All rights reserved.
   </footer>
 
   <script>
@@ -189,4 +206,12 @@
       const riskFactor = calculateRiskFactor(riskTokens);
 
       const webAppCost = calculateWebAppCost(webPages, emails, baselineCost);
-      const socialCost = calculateSocialCost(socialChannelsFactor, socialPosts, baselineCost
+      const socialCost = calculateSocialCost(socialChannelsFactor, socialPosts, baselineCost);
+
+      const totalCost = baselineCost * riskFactor + webAppCost + socialCost;
+
+      document.getElementById('result').innerText = `Total Price: £${totalCost.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
