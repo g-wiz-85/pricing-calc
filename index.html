@@ -1,162 +1,146 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptoasset Pricing Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .result {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Cryptoasset Pricing Calculator&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 800px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ddd;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 10px 0 5px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>input, select, button {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ccc;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.result {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Cryptoasset Pricing Calculator&lt;/h1&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="cryptoassets"&gt;Number of Cryptoassets:&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="number" id="cryptoassets" min="1" placeholder="Enter number of cryptoassets"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="risk-tokens"&gt;Number of Medium-High/High Risk Tokens:&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="number" id="risk-tokens" min="0" placeholder="Enter number of medium-high/high risk tokens"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="web-pages"&gt;Number of Web/App Pages:&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="number" id="web-pages" min="0" placeholder="Enter number of web/app pages"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="emails"&gt;Number of Emails per Month:&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="number" id="emails" min="0" placeholder="Enter number of emails per month"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="social-channels"&gt;Social Media Channels Used:&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;select id="social-channels"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="0"&gt;None&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="0.2"&gt;Standard Channels (X, Instagram, Facebook)&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="0.4"&gt;1 Non-Standard Channel&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="0.6"&gt;2 Non-Standard Channels&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="0.8"&gt;3 Non-Standard Channels&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="social-posts"&gt;Number of Posts per Month:&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="number" id="social-posts" min="0" placeholder="Enter number of posts per month"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="calculatePrice()"&gt;Calculate Total Price&lt;/button&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="result" id="result"&gt;Your total price will be displayed here.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function calculateBaselineCost(cryptoassets) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (cryptoassets === 1) return 14000;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (cryptoassets &lt;= 5) return 16000;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (cryptoassets &lt;= 10) return 18000;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (cryptoassets &lt;= 20) return 20000;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (cryptoassets &lt;= 30) return 22000;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (cryptoassets &lt;= 50) return 24000;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (cryptoassets &lt;= 100) return 25000;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>return 27000;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function calculateRiskFactor(riskTokens) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (riskTokens &lt;= 0) return 1.0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (riskTokens &lt;= 5) return 1.2;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (riskTokens &lt;= 10) return 1.4;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (riskTokens &lt;= 20) return 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (riskTokens &lt;= 40) return 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (riskTokens &lt;= 80) return 2.0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>return 2.3;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function calculateWebAppCost(webPages, emails, baselineCost) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>let webAppFactor = 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (webPages &gt;= 1 &amp;&amp; webPages &lt;= 5) webAppFactor += 0.2;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (webPages &lt;= 10) webAppFactor += 0.4;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (webPages &lt;= 20) webAppFactor += 0.6;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (webPages &lt;= 40) webAppFactor += 0.8;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (webPages &lt;= 80) webAppFactor += 1.0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (webPages &gt; 80) webAppFactor += 1.5;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>let emailFactor = 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (emails &gt;= 1 &amp;&amp; emails &lt;= 5) emailFactor += 0.05;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (emails &lt;= 10) emailFactor += 0.1;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (emails &lt;= 15) emailFactor += 0.15;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (emails &lt;= 20) emailFactor += 0.2;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (emails &lt;= 30) emailFactor += 0.3;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (emails &lt;= 40) emailFactor += 0.4;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (emails &lt;= 60) emailFactor += 0.6;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>return baselineCost * (webAppFactor + emailFactor);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function calculateSocialCost(socialChannelsFactor, socialPosts, baselineCost) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>let postFactor = 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (socialPosts &gt;= 6 &amp;&amp; socialPosts &lt;= 10) postFactor += 0.2;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (socialPosts &lt;= 15) postFactor += 0.4;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (socialPosts &lt;= 20) postFactor += 0.8;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (socialPosts &lt;= 30) postFactor += 1.2;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (socialPosts &lt;= 40) postFactor += 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>else if (socialPosts &lt;= 60) postFactor += 2.5;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>return baselineCost * (socialChannelsFactor + postFactor);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function calculatePrice() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const cryptoassets = parseInt(document.getElementById('cryptoassets').value) || 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const riskTokens = parseInt(document.getElementById('risk-tokens').value) || 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const webPages = parseInt(document.getElementById('web-pages').value) || 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const emails = parseInt(document.getElementById('emails').value) || 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const socialChannelsFactor = parseFloat(document.getElementById('social-channels').value) || 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const socialPosts = parseInt(document.getElementById('social-posts').value) || 0;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>const baselineCost = calculateBaselineCost(cryptoassets);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const riskFactor = calculateRiskFactor(riskTokens);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>const webAppCost = calculateWebAppCost(webPages, emails, baselineCost);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const socialCost = calculateSocialCost(socialChannelsFactor, socialPosts, baselineCost);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>const totalCost = baselineCost * riskFactor + webAppCost + socialCost;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('result').innerText = `Total Price: £${totalCost.toFixed(2)}`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <div class="container">
+    <h1>Cryptoasset Pricing Calculator</h1>
+    
+    <label for="cryptoassets">Number of Cryptoassets:</label>
+    <input type="number" id="cryptoassets" min="1" placeholder="Enter number of cryptoassets">
+
+    <label for="risk-tokens">Number of Medium-High/High Risk Tokens:</label>
+    <input type="number" id="risk-tokens" min="0" placeholder="Enter number of medium-high/high risk tokens">
+
+    <label for="web-pages">Number of Web/App Pages:</label>
+    <input type="number" id="web-pages" min="0" placeholder="Enter number of web/app pages">
+
+    <label for="emails">Number of Emails per Month:</label>
+    <input type="number" id="emails" min="0" placeholder="Enter number of emails per month">
+
+    <label for="social-channels">Social Media Channels Used:</label>
+    <select id="social-channels">
+      <option value="0">None</option>
+      <option value="0.2">Standard Channels (X, Instagram, Facebook)</option>
+      <option value="0.4">1 Non-Standard Channel</option>
+      <option value="0.6">2 Non-Standard Channels</option>
+      <option value="0.8">3 Non-Standard Channels</option>
+    </select>
+
+    <label for="social-posts">Number of Posts per Month:</label>
+    <input type="number" id="social-posts" min="0" placeholder="Enter number of posts per month">
+
+    <button onclick="calculatePrice()">Calculate Total Price</button>
+
+    <div class="result" id="result">Your total price will be displayed here.</div>
+  </div>
+
+  <script>
+    function calculateBaselineCost(cryptoassets) {
+      if (cryptoassets === 1) return 14000;
+      if (cryptoassets <= 5) return 16000;
+      if (cryptoassets <= 10) return 18000;
+      if (cryptoassets <= 20) return 20000;
+      if (cryptoassets <= 30) return 22000;
+      if (cryptoassets <= 50) return 24000;
+      if (cryptoassets <= 100) return 25000;
+      return 27000;
+    }
+
+    function calculateRiskFactor(riskTokens) {
+      if (riskTokens <= 0) return 1.0;
+      if (riskTokens <= 5) return 1.2;
+      if (riskTokens <= 10) return 1.4;
+      if (riskTokens <= 20) return 1.6;
+      if (riskTokens <= 40) return 1.8;
+      if (riskTokens <= 80) return 2.0;
+      return 2.3;
+    }
+
+    function calculateWebAppCost(webPages, emails, baselineCost) {
+      let webAppFactor = 0;
+      if (webPages >= 1 && webPages <= 5) webAppFactor += 0.2;
+      else if (webPages <= 10) webAppFactor += 0.4;
+      else if (webPages <= 20) webAppFactor += 0.6;
+      else if (webPages <= 40) webAppFactor += 0.8;
+      else if (webPages <= 80) webAppFactor += 1.0;
+      else if (webPages > 80) webAppFactor += 1.5;
+
+      let emailFactor = 0;
+      if (emails >= 1 && emails <= 5) emailFactor += 0.05;
+      else if (emails <= 10) emailFactor += 0.1;
+      else if (emails <= 15) emailFactor += 0.15;
+      else if (emails <= 20) emailFactor += 0.2;
+      else if (emails <= 30) emailFactor += 0.3;
+      else if (emails <= 40) emailFactor += 0.4;
+      else if (emails <= 60) emailFactor += 0.6;
+
+      return baselineCost * (webAppFactor + emailFactor);
+    }
+
+    function calculateSocialCost(socialChannelsFactor, socialPosts, baselineCost) {
+      let postFactor = 0;
+      if (socialPosts >= 6 && socialPosts <= 10) postFactor += 0.2;
+      else if (socialPosts <= 15) postFactor += 0.4;
+      else if (socialPosts <= 20) postFactor += 0.8;
+      else if (socialPosts <= 30) postFactor += 1.2;
+      else if (socialPosts <= 40) postFactor += 1.8;
+      else if (socialPosts <= 60) postFactor += 2.5;
+
+      return baselineCost * (socialChannelsFactor + postFactor);
+    }
+
+    function calculatePrice() {
+      const cryptoassets = parseInt(document.getElementById('cryptoassets').value) || 0;
+      const riskTokens = parseInt(document.getElementById('risk-tokens').value) || 0;
+      const webPages = parseInt(document.getElementById('web-pages').value) || 0;
+      const emails = parseInt(document.getElementById('emails').value) || 0;
+      const socialChannelsFactor = parseFloat(document.getElementById('social-channels').value) || 0;
+      const socialPosts = parseInt(document.getElementById('social-posts').value) || 0;
+
+      const baselineCost = calculateBaselineCost(cryptoassets);
+      const riskFactor = calculateRiskFactor(riskTokens);
+
+      const webAppCost = calculateWebAppCost(webPages, emails, baselineCost);
+      const socialCost = calculateSocialCost(socialChannelsFactor, socialPosts, baselineCost);
+
+      const totalCost = baselineCost * riskFactor + webAppCost + socialCost;
+
+      document.getElementById('result').innerText = `Total Price: £${totalCost.toFixed(2)}`;
+    }
+  </script>
 </body>
 </html>
