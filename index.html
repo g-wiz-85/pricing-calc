@@ -3,41 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Englebert Cryptoasset FinProm Approvals Pricing Calculator</title>
+  <title>Cryptoasset Pricing Calculator</title>
   <style>
+    /* Global Styles */
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      font-family: 'Roboto', Arial, sans-serif; /* Update with your brand font */
+      background-color: #f8f9fa; /* Light gray background */
+      margin: 0;
+      padding: 0;
+      color: #333; /* Text color */
     }
+
     .container {
       max-width: 800px;
-      margin: auto;
+      margin: 40px auto;
       padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff; /* White background for the content box */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      border: 1px solid #e0e0e0; /* Light border */
     }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #0056b3; /* Primary brand color */
+      margin-bottom: 20px;
+    }
+
     label {
       display: block;
       margin: 10px 0 5px;
+      font-weight: bold;
+      color: #333;
     }
+
     input, select, button {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      font-size: 1rem;
     }
+
+    button {
+      background-color: #0056b3; /* Primary brand color */
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004494; /* Darker primary color for hover */
+    }
+
     .result {
-      font-size: 18px;
+      font-size: 1.2rem;
       font-weight: bold;
-      color: #333;
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e7f1ff; /* Light blue background for results */
+      border: 1px solid #cce4ff; /* Light blue border for results */
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Englebert Cryptoasset FinProm Approvals Pricing Calculator</h1>
+    <h1>Cryptoasset Pricing Calculator</h1>
     
     <label for="cryptoassets">Number of Cryptoassets:</label>
     <input type="number" id="cryptoassets" min="1" placeholder="Enter number of cryptoassets">
@@ -67,6 +117,10 @@
 
     <div class="result" id="result">Your total price will be displayed here.</div>
   </div>
+
+  <footer>
+    © 2024 Your Company Name. All rights reserved.
+  </footer>
 
   <script>
     function calculateBaselineCost(cryptoassets) {
@@ -135,12 +189,4 @@
       const riskFactor = calculateRiskFactor(riskTokens);
 
       const webAppCost = calculateWebAppCost(webPages, emails, baselineCost);
-      const socialCost = calculateSocialCost(socialChannelsFactor, socialPosts, baselineCost);
-
-      const totalCost = baselineCost * riskFactor + webAppCost + socialCost;
-
-      document.getElementById('result').innerText = `Total Price: £${totalCost.toFixed(2)}`;
-    }
-  </script>
-</body>
-</html>
+      const socialCost = calculateSocialCost(socialChannelsFactor, socialPosts, baselineCost
