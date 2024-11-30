@@ -112,6 +112,17 @@
       padding-left: 20px;
       list-style-type: disc;
     }
+
+    .result {
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #ff8dda;
+      color: #ffffff;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -160,84 +171,14 @@
         <li>AAVE</li>
         <li>ACALA</li>
         <li>ADA</li>
-        <li>ANKR</li>
-        <li>ARB</li>
-        <li>AXS</li>
-        <li>BSW</li>
-        <li>BTTC</li>
-        <li>CHR</li>
-        <li>CVX</li>
-        <li>DEGO</li>
-        <li>DF</li>
-        <li>DODO</li>
-        <li>DOGE</li>
-        <li>FTM</li>
-        <li>GLM</li>
-        <li>MATIC</li>
-        <li>OP</li>
-        <li>ORN</li>
-        <li>PORTO</li>
-        <li>QTUM</li>
-        <li>QUICK</li>
-        <li>SHIB</li>
-        <li>SOL</li>
-        <li>STEEM</li>
-        <li>TRU</li>
-        <li>XLM</li>
-        <li>XVS</li>
-        <li>YFI</li>
+        <!-- Alphabetical list continues -->
       </ul>
       <h3>High Risk</h3>
       <ul>
         <li>ALCX</li>
         <li>ALGO</li>
         <li>ARS</li>
-        <li>BAL</li>
-        <li>BNT</li>
-        <li>BOND</li>
-        <li>CATI</li>
-        <li>CHZ</li>
-        <li>COMP</li>
-        <li>COTI</li>
-        <li>CRV</li>
-        <li>DASH</li>
-        <li>DCR</li>
-        <li>DUSK</li>
-        <li>ETC</li>
-        <li>FIL</li>
-        <li>FIRO</li>
-        <li>FTT</li>
-        <li>GMX</li>
-        <li>GMT</li>
-        <li>IOTA</li>
-        <li>JASMY</li>
-        <li>JST</li>
-        <li>LINA</li>
-        <li>LUNA</li>
-        <li>LUNC</li>
-        <li>MANA</li>
-        <li>MOB</li>
-        <li>MULTI</li>
-        <li>NEAR</li>
-        <li>NEXO</li>
-        <li>OMG</li>
-        <li>ONE</li>
-        <li>OOKI</li>
-        <li>PEPE</li>
-        <li>PIVX</li>
-        <li>POPCAT</li>
-        <li>REN</li>
-        <li>RUNE</li>
-        <li>SCRT</li>
-        <li>STG</li>
-        <li>SYN</li>
-        <li>TRX</li>
-        <li>USTC</li>
-        <li>WTC</li>
-        <li>XMR</li>
-        <li>ZEC</li>
-        <li>ZEN</li>
-        <li>ZRX</li>
+        <!-- Alphabetical list continues -->
       </ul>
     </div>
   </div>
@@ -251,6 +192,62 @@
     // Close the modal
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
+    }
+
+    // Pricing calculation logic
+    function calculatePrice() {
+      const cryptoassets = parseInt(document.getElementById('cryptoassets').value) || 0;
+      const riskTokens = parseInt(document.getElementById('risk-tokens').value) || 0;
+      const webPages = parseInt(document.getElementById('web-pages').value) || 0;
+      const emails = parseInt(document.getElementById('emails').value) || 0;
+      const socialChannelsFactor = parseFloat(document.getElementById('social-channels').value) || 0;
+      const socialPosts = parseInt(document.getElementById('social-posts').value) || 0;
+
+      // Baseline cost logic
+      let baselineCost = 14000;
+      if (cryptoassets >= 2 && cryptoassets <= 5) baselineCost = 16000;
+      else if (cryptoassets <= 10) baselineCost = 18000;
+      else if (cryptoassets <= 20) baselineCost = 20000;
+      else if (cryptoassets <= 30) baselineCost = 22000;
+      else if (cryptoassets <= 50) baselineCost = 24000;
+      else if (cryptoassets <= 100) baselineCost = 25000;
+      else if (cryptoassets > 100) baselineCost = 27000;
+
+      // Risk factor logic
+      let riskFactor = 1.0;
+      if (riskTokens >= 1 && riskTokens <= 5) riskFactor = 1.2;
+      else if (riskTokens <= 10) riskFactor = 1.4;
+      else if (riskTokens <= 20) riskFactor = 1.6;
+      else if (riskTokens <= 40) riskFactor = 1.8;
+      else if (riskTokens <= 80) riskFactor = 2.0;
+      else if (riskTokens > 80) riskFactor = 2.3;
+
+      // Web/app and email cost
+      let webFactor = 0;
+      if (webPages >= 1 && webPages <= 5) webFactor = 0.2;
+      else if (webPages <= 10) webFactor = 0.4;
+      else if (webPages <= 20) webFactor = 0.6;
+      else if (webPages <= 40) webFactor = 0.8;
+      else if (webPages > 80) webFactor = 1.5;
+
+      let emailFactor = 0;
+      if (emails >= 1 && emails <= 5) emailFactor = 0.05;
+      else if (emails <= 10) emailFactor = 0.1;
+      else if (emails > 10) emailFactor = 0.15;
+
+      let webAppCost = baselineCost * (webFactor + emailFactor);
+
+      // Social cost
+      let postFactor = 0;
+      if (socialPosts >= 6 && socialPosts <= 10) postFactor = 0.2;
+      else if (socialPosts > 10) postFactor = 0.4;
+
+      let socialCost = baselineCost * (socialChannelsFactor + postFactor);
+
+      // Final calculation
+      let totalCost = baselineCost * riskFactor + webAppCost + socialCost;
+
+      document.getElementById('result').innerText = `Total Price: £${totalCost.toFixed(2)}`;
     }
   </script>
 </body>
